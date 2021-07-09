@@ -1,5 +1,6 @@
 import "./styles/global.scss";
+import { RepositoryList } from "./components/RepositoryList";
 
 export const App = () => {
-  return <h1>Hello There!</h1>;
+  return <RepositoryList />;
 };

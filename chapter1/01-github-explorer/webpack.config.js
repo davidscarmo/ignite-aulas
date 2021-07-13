@@ -7,7 +7,7 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 module.exports = {
   mode: isDevelopment ? "development" : "production", //set which mode to build the project can be development or production
   devtool: isDevelopment ? "eval-source-map" : "source-map", //it tracks the error from the built script and shows the location of the error in the no built code
-  entry: path.resolve(__dirname, "src", "index.jsx"), //set the main file of project
+  entry: path.resolve(__dirname, "src", "index.tsx"), //set the main file of project
   // define the output path and filename
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -20,7 +20,7 @@ module.exports = {
     }),
   ].filter(Boolean),
   resolve: {
-    extensions: [".js", ".jsx"], // add extensions that webpack will be able to resolve
+    extensions: [".js", ".jsx", ".ts", ".tsx"], // add extensions that webpack will be able to resolve
   },
   devServer: {
     contentBase: path.resolve(__dirname, "public"), //set the base path base for the hot refresh
@@ -30,7 +30,7 @@ module.exports = {
     // combine babel and webpack and defines .jsx files will be resolved by babel-loader
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.(j|t)sx$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",

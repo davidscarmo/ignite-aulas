@@ -1,16 +1,22 @@
 import { Container, Content } from "./styles";
-import logoImg from '../../assets/logo.svg'
+import logoImg from "../../assets/logo.svg";
+import Modal from "react-modal";
+import { useState } from "react";
 
-export function Header() 
-{
-  return(
+interface HeaderProps {
+  onOpenNewTransactionModal: () => void;
+}
+export function Header({onOpenNewTransactionModal} : HeaderProps) {
+ 
+  return (
     <Container>
-      <Content> 
-        <img src={logoImg} alt="DT Money"/>
-        <button type="button">
+      <Content>
+        <img src={logoImg} alt="DT Money" />
+        <button type="button" onClick={onOpenNewTransactionModal}>
           Nova Transação
         </button>
+       
       </Content>
     </Container>
-  )
+  );
 }

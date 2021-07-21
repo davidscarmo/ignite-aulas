@@ -5,7 +5,7 @@ import { Container, RadioBox, TransactionTypeContainer } from "./styles";
 import closeImg from "../../assets/close.svg";
 import incomeImg from "../../assets/income.svg";
 import outcomeImg from "../../assets/outcome.svg";
-import { api } from "../../services/api";
+import { useTransactions } from "../../hooks/useTransactionsContext";
 
 interface NewTrasanctionModalProps {
   isOpen: boolean;
@@ -17,22 +17,23 @@ export function NewTransactionModal({
   onRequestClose,
 }: NewTrasanctionModalProps) {
   const [title, setTitle] = useState("");
-  const [value, setValue] = useState(0);
+  const [amount, setAmout] = useState(0);
   const [category, setCategory] = useState("");
 
   const [type, setType] = useState("deposit");
 
-  function handleCreateNewTransaction(event: FormEvent) {
+  const { createTransaction } = useTransactions();
+  async function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
 
-    const data = {
-      title,
-      value,
-      category,
-      type,
-    };
+    await createTransaction({ title, amount, category, type });
 
-    api.post('/transactions', data);
+    setTitle("");
+    setAmout(0);
+    setCategory("");
+    setType("");
+
+    onRequestClose();
   }
   return (
     <Modal
@@ -61,8 +62,8 @@ export function NewTransactionModal({
         <input
           type="number"
           placeholder="Valor"
-          onChange={({ target }) => setValue(Number(target.value))}
-          value={value}
+          onChange={({ target }) => setAmout(Number(target.value))}
+          value={amount}
         />
         <TransactionTypeContainer>
           <RadioBox

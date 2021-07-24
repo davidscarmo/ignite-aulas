@@ -1,4 +1,3 @@
-import "../styles/global.scss";
 import Head from "next/head";
 
 export default function Home() {

@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { signIn, signOut, signout, useSession } from "next-auth/client";
+import { signIn, signOut, useSession } from "next-auth/client";
 import { FiX } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
 export function SingInButton() {

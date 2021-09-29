@@ -63,7 +63,7 @@ export const Header = () => {
           <Box mr="4" textAlign="right">
             <Text> David Carmo</Text>
             <Text color="gray.300" fontSize="small">
-              diego.schell.f@gmail.com
+              davidsc2812@gmail.com
             </Text>
           </Box>
 

@@ -1,4 +1,5 @@
-import { createServer, Model } from "miragejs";
+import { createServer, Factory, Model } from "miragejs";
+import faker from "faker";
 type User = {
   name: string;
   email: string;
@@ -9,6 +10,22 @@ export function makeServer() {
   const server = createServer({
     models: {
       user: Model.extend<Partial<User>>({}), //it can contain all User parameters or not;
+    },
+    factories: {
+      user: Factory.extend({
+        name(i: number) {
+          return `User ${i}`;
+        },
+        email() {
+          return faker.internet.email().toLowerCase(); // it generates fake emails and applies lowercase on them
+        },
+        createdAt() {
+          return faker.date.recent(10); // it generates recent dates / range of 10 days before current date
+        },
+      }),
+    },
+    seeds(server) {
+      server.createList("user", 200);
     },
     routes() {
       this.namespace = "api";

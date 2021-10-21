@@ -28,9 +28,9 @@ export const getUsers = async (page: number): Promise<GetUsersResponse> => {
   });
   return { users, totalCount };
 };
-// ["users", page ] it creates a different cache index every time that the page changes for a new page. 
+// ["users", page ] it creates a different cache index every time that the page changes for a new page.
 export const useUsers = (page: number) => {
   return useQuery(["users", page], () => getUsers(page), {
-    staleTime: 1000 * 5,
+    staleTime: 1000 * 60 * 10, // 10 minutes
   });
 };

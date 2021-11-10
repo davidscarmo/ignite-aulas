@@ -4,6 +4,7 @@ interface ProductItemProps {
   product: {
     id: number;
     price: number;
+    priceFormatted: number;
     title: string;
   };
   onAddToWishList: (id: number) => void;

@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import { signIn, signOut, useSession } from "next-auth/client";
 import { FiX } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
-export function SingInButton() {
+export function SignInButton() {
   const [session] = useSession();
   console.log(session);
   return session ? (
@@ -22,7 +22,7 @@ export function SingInButton() {
       onClick={() => signIn("github")}
     >
       <FaGithub color="#eba417" />
-      Sing in with GitHub
+      Sign in with GitHub
     </button>
   );
 }

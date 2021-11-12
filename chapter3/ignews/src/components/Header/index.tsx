@@ -1,4 +1,4 @@
-import { SingInButton } from "../SingInButton";
+import { SignInButton } from "../SingInButton";
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { ActiveLink } from "../ActiveLink";
@@ -17,7 +17,7 @@ export function Header() {
             <a>Posts</a>
           </ActiveLink>
         </nav>
-        <SingInButton />
+        <SignInButton />
       </div>
     </header>
   );
